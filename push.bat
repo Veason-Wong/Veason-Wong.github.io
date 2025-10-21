@@ -8,18 +8,21 @@ if %ERRORLEVEL% NEQ 0 (
   exit /b %ERRORLEVEL%
 )
 
-echo ? 构建完成，进入构建输出目录...
-cd .vuepress/dist
+echo ? 构建完成，提交并推送到 main 分支...
+git commit -m "blog update"
+git push -f origin main
 
-echo 初始化 Git 仓库...
-git init
+echo ? 推送完成，切换到 gh-pages 分支并拉取静态页面...
+git switch gh-pages
+git checkout main -- docs/.vitepress/dist/*
+mv docs/.vitepress/dist/* .
+rm -rf docs
+
+echo Git 提交...
 git add .
-git commit -m "deploy"
+git commit -m "blog update"
 
 echo 推送到 GitHub gh-pages 分支...
-git branch -M gh-pages
-git remote remove origin
-git remote add origin https://github.com/Veason-Wong/Veason-Wong.git
 git push -f origin gh-pages
 
 echo ?? 更新完成！

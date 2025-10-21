@@ -5,7 +5,7 @@ layout: home
 hero:
   name: "Veason の Blog"
   text: "不积跬步无以至千里"
-  tagline: 人类高质量程序员
+  tagline: 人类高质量男性
   image:
     src: /img/wangzai.jpg
     alt: Veason
