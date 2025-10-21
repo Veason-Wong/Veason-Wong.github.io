@@ -15,8 +15,10 @@ git push -f origin main
 echo ? 推送完成，切换到 gh-pages 分支并拉取静态页面...
 git switch gh-pages
 git checkout main -- docs/.vitepress/dist/*
-mv docs/.vitepress/dist/* .
-rm -rf docs
+rmdir /s /q assets
+move /Y docs\.vitepress\dist\* .
+move /Y docs\.vitepress\dist\assets
+rmdir /s /q docs
 
 echo Git 提交...
 git add .
